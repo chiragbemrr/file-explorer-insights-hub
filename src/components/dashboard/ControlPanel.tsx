@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
+import { useSessionData } from '../../hooks/useSessionData';
 
 interface ControlPanelProps {
   selectedSensor: 'CO' | 'CO2';
@@ -27,13 +28,7 @@ const ControlPanel = ({
   setEndDate,
   view
 }: ControlPanelProps) => {
-  const sessions = [
-    '31-12-2018 20:30:00',
-    '15-01-2019 14:15:00',
-    '28-02-2019 09:45:00',
-    '10-03-2019 16:20:00',
-    '22-04-2019 11:30:00'
-  ];
+  const { sessions } = useSessionData(startDate, endDate);
 
   return (
     <Card className="mb-6">
@@ -82,6 +77,7 @@ const ControlPanel = ({
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
+              min="2018-12-31"
             />
           </div>
 
@@ -91,6 +87,7 @@ const ControlPanel = ({
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
+              min="2018-12-31"
             />
           </div>
         </div>

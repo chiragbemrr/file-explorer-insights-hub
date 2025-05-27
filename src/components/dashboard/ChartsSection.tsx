@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import EmissionChart from './charts/EmissionChart';
 import PieChart from './charts/PieChart';
@@ -59,14 +58,16 @@ const ChartsSection = ({
           </CardHeader>
           <CardContent>
             <SessionChart data={sessionData} sensor={selectedSensor} />
-            <div className="mt-4">
-              <p className="text-sm text-gray-600 mb-2">Adjust the slider to view previous data</p>
-              <Slider
-                defaultValue={[100]}
-                max={100}
-                step={1}
-                className="w-full"
-              />
+            <div className="mt-6 space-y-4">
+              <div>
+                <p className="text-sm text-gray-600 mb-2">Adjust the slider to view previous data</p>
+                <Slider
+                  defaultValue={[100]}
+                  max={100}
+                  step={1}
+                  className="w-full"
+                />
+              </div>
             </div>
           </CardContent>
         </Card>
